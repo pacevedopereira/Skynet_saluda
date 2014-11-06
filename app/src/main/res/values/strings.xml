@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Skynet saluda</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hola">Introduzca su nombre</string>
+    <string name="saludo">Skynet, salúdame</string>
+    <string name="saludoSkynet">Skynet le saluda, </string>
+    <string name="saludoSr">Señor</string>
+    <string name="saludoSra">Señora</string>
+    <string name="saludoSrSra">Saludo: </string>
+    <string name="showTime">Mostrar hora</string>
+
+</resources>
