@@ -1,6 +1,7 @@
 package com.example.frpinkl.skynetsaluda;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +35,7 @@ public class MainActivity extends Activity {
                 //código que se ejecuta cuando se pulse
                 EditText text = (EditText)findViewById(R.id.entry);
                 //ahora que tenemos el objeto EditText podemos recuperar su valor
-                String saludo = null;
+                String saludo;
                 String nombreIntroducido = text.getText().toString();
                 //String saludo = getResources().getString(R.string.saludoSkynet) + " " + nombreIntroducido;
                 //ahora empezamos con el RadioGroup
@@ -59,8 +60,11 @@ public class MainActivity extends Activity {
 
 
                 //ahora escribimos el saludo en el TextView de salida
-                TextView out = (TextView)findViewById(R.id.out);
-                out.setText(saludo);
+                //TextView out = (TextView)findViewById(R.id.out);
+                //out.setText(saludo);
+                Intent intent = new Intent(MainActivity.this, Salutation.class);
+                intent.putExtra("salutation", saludo);
+                startActivity(intent);
             }
         });
 
