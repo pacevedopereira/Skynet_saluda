@@ -11,5 +11,6 @@
     <string name="saludoSra">Señora</string>
     <string name="saludoSrSra">Saludo: </string>
     <string name="showTime">Mostrar hora</string>
+    <string name="noHayNombre">Por favor, introduzca un nombre</string>
 
 </resources>

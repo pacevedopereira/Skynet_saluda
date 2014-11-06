@@ -1,6 +1,7 @@
 package com.example.frpinkl.skynetsaluda;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -34,6 +36,18 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 //código que se ejecuta cuando se pulse
                 EditText text = (EditText)findViewById(R.id.entry);
+
+                //vamos a ver si se introdujo nombre
+
+                if("".equals(text.getText().toString().trim())){
+                    //showAlert();
+                    showToast();
+                    return;
+
+                }
+
+
+
                 //ahora que tenemos el objeto EditText podemos recuperar su valor
                 String saludo;
                 String nombreIntroducido = text.getText().toString();
@@ -68,6 +82,8 @@ public class MainActivity extends Activity {
             }
         });
 
+
+
         //para habilitar las fechas
         CheckBox checkBox = (CheckBox)findViewById(R.id.checkBox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -81,6 +97,13 @@ public class MainActivity extends Activity {
             }
         });
 
+    }
+    protected void showToast(){
+        Context context = getApplicationContext();
+        CharSequence text = getResources().getString(R.string.noHayNombre);
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
 
