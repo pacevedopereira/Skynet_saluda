@@ -7,23 +7,47 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends Activity {
+
+
+    RadioButton botonHola, botonAdios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        botonHola = (RadioButton) findViewById(R.id.radioHola);
+        botonAdios = (RadioButton) findViewById(R.id.radioAdios);
+
+
+
+
+
+
+
+
+
+
+
 
         //recogemos elementos del layout y les damos funcionalidad
         //hay que recordar hacer el cast (en este caso a tipo Button)
@@ -45,22 +69,29 @@ public class MainActivity extends Activity {
                     return;
 
                 }
-
-
-
                 //ahora que tenemos el objeto EditText podemos recuperar su valor
                 String saludo;
                 String nombreIntroducido = text.getText().toString();
+                saludo = "";
+
+                if(botonHola.isChecked()){
+                    saludo = "HOLA ";
+                } else if (botonAdios.isChecked()){
+                    saludo = "ADIÓS ";
+                }
+
+
+
                 //String saludo = getResources().getString(R.string.saludoSkynet) + " " + nombreIntroducido;
                 //ahora empezamos con el RadioGroup
                 RadioGroup radio = (RadioGroup)findViewById(R.id.RadioGroup01);
                 if (R.id.radioSr == radio.getCheckedRadioButtonId()){
-                    saludo=getResources().getString(R.string.saludoSr).toLowerCase();
+                    saludo=saludo+ "Señor: "+text.getText();
                 }
                 else{
-                    saludo=getResources().getString(R.string.saludoSra).toLowerCase();
+                    saludo=saludo+ "Señora: "+text.getText();
                 }
-                saludo=getResources().getString(R.string.saludoSkynet)+" "+saludo+" "+nombreIntroducido;
+                //saludo=getResources().getString(R.string.saludoSkynet)+" "+saludo+" "+nombreIntroducido;
 
                 //vamos a por la hora y la fecha
                 CheckBox timeCheckBox = (CheckBox)findViewById(R.id.checkBox);
@@ -109,6 +140,7 @@ public class MainActivity extends Activity {
 
 
 //Listo para corregir
+
 
 
 
