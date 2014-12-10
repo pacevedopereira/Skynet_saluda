@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
+    //creo un arraylist para el spinner que utilizaré posteriormente
+    ArrayList<String> spinnerArrayList;
 
     RadioButton botonHola, botonAdios;
 
@@ -35,11 +37,29 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
-        botonHola = (RadioButton) findViewById(R.id.radioHola);
-        botonAdios = (RadioButton) findViewById(R.id.radioAdios);
+       // botonHola = (RadioButton) findViewById(R.id.radioHola);
+       // botonAdios = (RadioButton) findViewById(R.id.radioAdios);
 
 
 
+
+        //llamo al spinner
+        final Spinner spinner = (Spinner)findViewById(R.id.spinner);
+
+
+        //creo un arraylist
+        spinnerArrayList = new ArrayList<String>();
+
+        //añado el HOLA y ADIÓS al arraylist. Serán los valores a escoger dentro del spinner
+        spinnerArrayList.add("HOLA");
+        spinnerArrayList.add("ADIÓS");
+
+
+        //creo el adaptador del arraylist
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, spinnerArrayList);
+
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adaptador);
 
 
 
@@ -70,26 +90,26 @@ public class MainActivity extends Activity {
 
                 }
                 //ahora que tenemos el objeto EditText podemos recuperar su valor
-                String saludo;
+                String saludo="";
                 String nombreIntroducido = text.getText().toString();
-                saludo = "";
+                saludo = saludo + spinner.getSelectedItem()+" ";
 
-                if(botonHola.isChecked()){
+                /*if(botonHola.isChecked()){
                     saludo = "HOLA ";
                 } else if (botonAdios.isChecked()){
                     saludo = "ADIÓS ";
                 }
-
+*/
 
 
                 //String saludo = getResources().getString(R.string.saludoSkynet) + " " + nombreIntroducido;
                 //ahora empezamos con el RadioGroup
                 RadioGroup radio = (RadioGroup)findViewById(R.id.RadioGroup01);
                 if (R.id.radioSr == radio.getCheckedRadioButtonId()){
-                    saludo=saludo+ "Señor: "+text.getText();
+                    saludo=saludo+ "Señor "+text.getText();
                 }
                 else{
-                    saludo=saludo+ "Señora: "+text.getText();
+                    saludo=saludo+ "Señora "+text.getText();
                 }
                 //saludo=getResources().getString(R.string.saludoSkynet)+" "+saludo+" "+nombreIntroducido;
 
